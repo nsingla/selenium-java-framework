@@ -28,7 +28,7 @@ jobs:
 
     - name: Build with Maven
       if: ${{ github.ref != 'refs/heads/master' }}
-      run: mvn clean package --file pom.xml
+      run: mvn clean package --file pom.xml -Dheadless=true
       
     - name: Set up Maven Central Repository
       uses: actions/setup-java@v3
