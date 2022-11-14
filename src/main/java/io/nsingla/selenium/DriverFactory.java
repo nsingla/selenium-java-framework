@@ -3,19 +3,20 @@ package io.nsingla.selenium;
 import io.nsingla.constants.SeleniumConstants;
 import io.nsingla.selenium.enums.TestMode;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.PageLoadStrategy;
-import org.openqa.selenium.Proxy;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.AbstractDriverOptions;
@@ -23,6 +24,7 @@ import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -140,9 +142,20 @@ public class DriverFactory {
         if (!downloaDir.exists()) {
             downloaDir.mkdir();
         }
-        ChromeOptions options = createDefaultDriverOptions(ChromeOptions.class);
-        setDefaultChromeOptions(options);
-        return new ChromeDriver(options);
+        AbstractDriverOptions options = getDriverOptions();
+        if (Browser.FIREFOX.equals(browser)) {
+            return new FirefoxDriver((FirefoxOptions) options);
+        } else if (Browser.CHROME.equals(browser)) {
+            return new ChromeDriver((ChromeOptions) options);
+        } else if (Browser.SAFARI.equals(browser)) {
+            return new SafariDriver((SafariOptions) options);
+        } else if (Browser.EDGE.equals(browser)) {
+            return new EdgeDriver((EdgeOptions) options);
+        } else if (Browser.HTMLUNIT.equals(browser)) {
+            return new HtmlUnitDriver();
+        } else {
+            throw new RuntimeException("Cannot start a webdriver session for browser: " + browser);
+        }
     }
 
     private RemoteWebDriver getRemoteDriver(String server) throws MalformedURLException {
