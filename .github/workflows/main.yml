@@ -24,8 +24,7 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
     
     - name: SetUp Chrome Browser
-    - uses: browser-actions/setup-chrome@latest
-    - run: chrome --version
+      uses: browser-actions/setup-chrome@latest
 
     - name: Build with Maven
       if: ${{ github.ref != 'refs/heads/master' }}
