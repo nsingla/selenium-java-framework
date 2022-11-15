@@ -183,8 +183,8 @@
                     <versionDigitToIncrement>1</versionDigitToIncrement>
 
                     <gitFlowConfig>
-                        <developmentBranch>master</developmentBranch>
-                        <productionBranch>master</productionBranch>
+                        <developmentBranch>main</developmentBranch>
+                        <productionBranch>main</productionBranch>
                     </gitFlowConfig>
 
                     <commitMessages>
