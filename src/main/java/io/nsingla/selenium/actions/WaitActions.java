@@ -290,7 +290,7 @@ public class WaitActions {
     }
 
     /**
-     * Used to switch between frames using frameToBeAvailableAndSwitchToIt &
+     * Used to switch between frames using frameToBeAvailableAndSwitchToIt and
      * WebDriverWait.
      *
      * @param frame name of the frame to switch to

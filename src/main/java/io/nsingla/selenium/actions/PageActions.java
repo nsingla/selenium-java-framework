@@ -54,7 +54,7 @@ public class PageActions {
 
     /**
      * Used to interact with a web element by "Clicking On It" using
-     * findElement(By), WebDriverWait & elementToBeClickable.
+     * findElement(By), WebDriverWait and elementToBeClickable.
      *
      * @param byType       name of the variable used to store the locator path of the web
      *                     element interacting with
@@ -247,7 +247,7 @@ public class PageActions {
 
     /**
      * Used to interact with a web element by "Sending Text To It" using
-     * findElement(By), WebDriverWait & elementSendKeys, and calls the "clear"
+     * findElement(By), WebDriverWait and elementSendKeys, and calls the "clear"
      * method before typing.
      *
      * @param byType    is the name of the variable used to store the locator path of

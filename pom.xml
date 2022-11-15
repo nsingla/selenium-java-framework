@@ -5,7 +5,7 @@
 
     <groupId>io.github.nsingla</groupId>
     <artifactId>selenium-framework</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>Selenium Framework</name>
     <description>Basic framework to help build selenium tests</description>
 
@@ -183,8 +183,8 @@
                     <versionDigitToIncrement>1</versionDigitToIncrement>
 
                     <gitFlowConfig>
-                        <developmentBranch>master</developmentBranch>
-                        <productionBranch>master</productionBranch>
+                        <developmentBranch>main</developmentBranch>
+                        <productionBranch>main</productionBranch>
                     </gitFlowConfig>
 
                     <commitMessages>
