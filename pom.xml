@@ -167,6 +167,45 @@
                     </includes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.amashchenko.maven.plugin</groupId>
+                <artifactId>gitflow-maven-plugin</artifactId>
+                <version>1.16.0</version>
+
+                <configuration>
+                    <verbose>true</verbose>
+
+                    <skipTestProject>true</skipTestProject>
+
+                    <postReleaseGoals>deploy</postReleaseGoals>
+                    <postHotfixGoals>deploy</postHotfixGoals>
+
+                    <versionDigitToIncrement>1</versionDigitToIncrement>
+
+                    <gitFlowConfig>
+                        <developmentBranch>master</developmentBranch>
+                        <productionBranch>master</productionBranch>
+                    </gitFlowConfig>
+
+                    <commitMessages>
+                        <hotfixStartMessage>Prepare fix version @{version}</hotfixStartMessage>
+
+                        <releaseStartMessage>Release version @{version}</releaseStartMessage>
+                        <releaseFinishMessage>Prepare snapshot version @{version}</releaseFinishMessage>
+                    </commitMessages>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <profiles>
