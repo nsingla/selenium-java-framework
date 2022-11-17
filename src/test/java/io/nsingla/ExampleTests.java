@@ -16,7 +16,8 @@ public class ExampleTests extends SeleniumBase {
 
     @Test
     public void testGoogle() {
-        webDriver.get("https://www.google.com");
+        GoogleSearchPage searchPage = new GoogleSearchPage(webDriver);
+        searchPage.search("Something");
     }
 
 
